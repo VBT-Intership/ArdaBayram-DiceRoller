@@ -16,6 +16,9 @@ class MainActivity : AppCompatActivity() {
 
         val countUpButton: Button = findViewById(R.id.countUp_button)
         countUpButton.setOnClickListener { countUp() }
+
+        val resetButton: Button = findViewById(R.id.reset_button)
+        resetButton.setOnClickListener { reset() }
     }
 
     private fun rollDice() {
@@ -30,13 +33,19 @@ class MainActivity : AppCompatActivity() {
         val resultText: TextView = findViewById(R.id.result_text)
         var diceValue = resultText.text.toString().toIntOrNull()
 
-        if(diceValue == null){
+        if (diceValue == null) {
             diceValue = 1
-        }else if(diceValue < 6){
+        } else if (diceValue < 6) {
             diceValue++
         }
 
         resultText.text = diceValue.toString()
 
+    }
+
+    private fun reset() {
+        Toast.makeText(this, "Reset button clicked", Toast.LENGTH_SHORT).show()
+        val resultText: TextView = findViewById(R.id.result_text)
+        resultText.text = 0.toString()
     }
 }
